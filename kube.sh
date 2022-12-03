@@ -41,3 +41,5 @@ systemctl enable kubelet
 echo 'KUBELET_EXTRA_ARGS="--fail-swap-on=false"' > /etc/sysconfig/kubelet
 
 systemctl start kubelet
+
+reboot
