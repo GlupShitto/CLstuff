@@ -1,3 +1,4 @@
+text
 lang en_US
 keyboard de
 timezone Europe/Berlin --utc
