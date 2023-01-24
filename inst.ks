@@ -12,7 +12,7 @@ autopart
 firstboot --disable
 selinux --disabled
 %packages
-@expect
+expect
 perl
 @^server-product-environment
 %end
