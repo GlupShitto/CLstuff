@@ -11,12 +11,16 @@ clearpart --all --initlabel
 autopart
 firstboot --disable
 selinux --disabled
+%pre
+swapoff -a
+%end
 %packages
 
 perl
 @^server-product-environment
 %end
 %post
+echo "swapoff -a" >> /etc/rc.local
 echo "GRUB_CMDLINE_LINUX='ipv6.disable=1'" >> /etc/default/grub
 grub2-mkconfig -o /boot/grub2/grub.cfg
 dnf install -y expect
