@@ -1,0 +1,20 @@
+set timeout 9
+set hostname "192.168.179.173"
+set user "root"
+set pw "Passw0rt!"
+spawn ssh-copy-id $user@$hostname 
+
+expect {
+    timeout { send_user "\nFailed to get password prompt\n"; exit 1 }
+    eof { send_user "\nSSH failure for $hostname\n"; exit 1 }
+
+    "*re you sure you want to continue connecting" {
+        send "yes\r"
+        exp_continue    
+    }
+    "*assword*" {
+        send  "$pw\r"
+        interact
+        exit 0
+    }
+}
